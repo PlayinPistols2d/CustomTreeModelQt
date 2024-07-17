@@ -14,6 +14,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+//Usage example
 void MainWindow::showcase()
 {
     setWindowTitle("CustomTreeModel example");
