@@ -24,6 +24,25 @@ void CustomTreeModel::addChildItem(const QModelIndex &parent, const QVariant &da
     endInsertRows();
 }
 
+void CustomTreeModel::removeParentItem(const QModelIndex &parent)
+{
+    if (!parent.isValid())
+        return;
+
+    TreeItem *parentItem = getItem(parent);
+    if (!parentItem || parentItem == rootItem)
+        return;
+
+    int row = parentItem->row();
+    beginRemoveRows(parent.parent(), row, row);
+
+    parentItem->parentItem()->m_childItems.removeAt(row);
+
+    delete parentItem;
+
+    endRemoveRows();
+}
+
 QVariant CustomTreeModel::data(const QModelIndex &index, int role) const {
     if (!index.isValid())
         return QVariant();

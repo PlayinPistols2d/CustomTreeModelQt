@@ -22,6 +22,7 @@ public:
 
     void addParentItem(const QVariant &data);
     void addChildItem(const QModelIndex &parent, const QVariant &data);
+    void removeParentItem(const QModelIndex &parent);
     void clearModel();
 
 private:
